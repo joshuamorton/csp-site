@@ -1,12 +1,17 @@
 <!DOCTYPE html>
+{%  load staticfiles %}
 <html>
 <head>
-    <title>Mypage</title>
+    <title>Log In</title>
+    <link rel="stylesheet" type="text/css" href="{% static "default.css" %}">
 </head>
 <body>
+<h1>Please Log in</h1>
+<div id="form_container">
 <form action="/login/" method="post">{% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
+</div>
 </body>
 </html>

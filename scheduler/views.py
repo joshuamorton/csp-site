@@ -37,7 +37,7 @@ def formatReturnValues(resultList):
 
 def data_entry(request):
     if not request.user.is_authenticated():
-        return HttpResponse("access denied")
+        return HttpResponse("access denied..  Login <a href='/login'>here</a>.")
     elif request.method == 'POST':
         form = DataEntryForm(request.POST)
         if form.is_valid:

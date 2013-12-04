@@ -7,8 +7,8 @@ from django.contrib.auth import login, authenticate, logout
 # Create your views here.
 
 def index(request):
-    return HttpResponse("This is the homepage")
-    print("Someone went to the homepage")
+    return HttpResponse("This is the homepage. <br> You can <a href='/login'>login</a> or <a href='/register'>register</a>.")
+    print("Someone went to the homepage.")
 
 def login_view(request):
     if request.method == 'POST':
@@ -22,14 +22,14 @@ def login_view(request):
                     login(request, user)
                     return HttpResponseRedirect('/welcome/')
                 else:
-                    return HttpResponse("Error, you aren't registered.")
+                    return HttpResponse("Error, you aren't registered. Register <a href='/register'>here</a>.")
     else:
         form = LoginForm()
     return render(request, 'login/login.html', {'form' : form})
 
 def logout_view(request):
     logout(request)
-    return HttpResponse("you have been logged out")
+    return HttpResponse("you have been logged out.  You can login <a href='/login'>here</a>.")
 
 #THIS IS HACKY AS HELL!
 def register(request):
@@ -72,4 +72,4 @@ def welcome(request):
     return HttpResponse("Welcome.  You can logout <a href = '/logout'>here</a>.\n.  Our app is <a href='/app'>here.")
 
 def thanks(request):
-    return HttpResponse("thanks for registering!")
+    return HttpResponse("thanks for registering!  You can now login <a href = '/login'>here</a>")

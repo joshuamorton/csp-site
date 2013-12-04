@@ -5,6 +5,7 @@
 </head>
 <body>
 <h1>Your class schedule:</h1>
+{% if data != "No schedule possible." %}
 {% for each_item in data %}
     {% if "is not in the schedule" in each_item %}
         <b>{{ each_item }}</b>
@@ -39,5 +40,9 @@
     {% endif %}
     <br>
 {% endfor %}
+{% else %}
+<h2>No schedule is possible with your current requirements.</h2>  
+<h4>You should try making fewer classes "required" or open start your day earlier or end it later.</h4>
+{% endif %}
 </body>
 </html>
